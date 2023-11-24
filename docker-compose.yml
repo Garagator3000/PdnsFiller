@@ -1,0 +1,28 @@
+version: "3.8"
+
+x-common: &common
+  image: garagator3000/pdns_filler
+  build:
+    context: .
+    dockerfile: Dockerfile
+  network_mode: host
+
+services:
+  pdns_filler_garagator_ru:
+    <<: *common
+    entrypoint: ["/pdns_filler -count 20000 -domain garagator.ru"]
+  pdns_filler_garagator_en:
+    <<: *common
+    entrypoint: ["/pdns_filler -count 20000 -domain garagator.en"]
+  pdns_filler_garagator_com:
+    <<: *common
+    entrypoint: ["/pdns_filler -count 20000 -domain garagator.com"]
+  pdns_filler_garagator_su:
+    <<: *common
+    entrypoint: ["/pdns_filler -count 20000 -domain garagator.su"]
+  pdns_filler_garagator_org:
+    <<: *common
+    entrypoint: ["/pdns_filler -count 20000 -domain garagator.org"]
+  pdns_filler_garagator_net:
+    <<: *common
+    entrypoint: ["/pdns_filler -count 20000 -domain garagator.net"]
